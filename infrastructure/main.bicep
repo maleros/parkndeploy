@@ -1,7 +1,5 @@
 param swaLocation string // Static Web App locations are limited, we need to add another variable
 
-
-
 targetScope = 'resourceGroup' // We'll deploy the resources in the provided resource group
 
 // Parameters to easily construct resource names
@@ -32,8 +30,7 @@ module appService 'modules/appService.bicep' = {
   }
 }
 
-// Export App Service Name
-output appServiceName string = appService.outputs.appServiceName
+
 
 // Create the Static Web App through the StaticWebApp module
 module staticWebApp 'modules/staticWebApp.bicep' = {
