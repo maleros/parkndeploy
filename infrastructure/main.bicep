@@ -30,14 +30,7 @@ module appService 'modules/appService.bicep' = {
   }
 }
 
-module staticWebAppBackend 'modules/staticWebAppBackend.bicep' = {
-  name: 'staticWebAppBackend'
-  params: {
-    backendBindedResourceId: appService.outputs.appServiceId
-    swaName: staticWebApp.outputs.swaName
-    location: location
-  }
-}
+
 
 // Create the Static Web App through the StaticWebApp module
 module staticWebApp 'modules/staticWebApp.bicep' = {
@@ -46,6 +39,14 @@ module staticWebApp 'modules/staticWebApp.bicep' = {
     location: swaLocation
     project: project
     identifier: identifier
+  }
+}
+module staticWebAppBackend 'modules/staticWebAppBackend.bicep' = {
+  name: 'staticWebAppBackend'
+  params: {
+    backendBindedResourceId: appService.outputs.appServiceId
+    swaName: staticWebApp.outputs.swaName
+    location: location
   }
 }
 
