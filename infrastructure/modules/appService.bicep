@@ -18,5 +18,5 @@ resource app 'Microsoft.Web/sites@2022-03-01' = {
     }
   }
 }
-
+output appServiceId string = app.id
 output appServiceName string = app.name // Export the App Service name for deployment
